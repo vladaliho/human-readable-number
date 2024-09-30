@@ -47,14 +47,16 @@ module.exports = function toReadable(number) {
     }
 
     if (number >= 10 && number <= 19) {
-        result += teens[number - 10]; // исправлено
+        result += teens[number - 10];
     } else if (number >= 20) {
         result += tens[Math.floor(number / 10)];
         number %= 10;
-        if (number > 0) result += " " + ones[number]; // исправлено
+        if (number > 0) result += " " + ones[number];
     } else if (number < 10) {
         result += ones[number];
     }
 
-    return result;
+    return result.trim();
 };
+
+console.log(toReadable(991));
