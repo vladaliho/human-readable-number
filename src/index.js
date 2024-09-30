@@ -44,13 +44,10 @@ module.exports = function toReadable(number) {
         if (number > 0) result += " ";
     }
 
-    if (number >= 10 && number <= 19) {
-        if (number === 10) {
-            result += tens[0];
-        } else {
-            result += teens[number - 11];
-        }
-        return result;
+    if (number === 10) {
+        result += tens[0];
+    } else if (number >= 11 && number <= 19) {
+        result += teens[number - 11];
     } else if (number >= 20) {
         result += tens[Math.floor(number / 10) - 1];
         number %= 10;
