@@ -12,6 +12,7 @@ module.exports = function toReadable(number) {
         "nine",
     ];
     const teens = [
+        "ten",
         "eleven",
         "twelve",
         "thirteen",
@@ -23,6 +24,7 @@ module.exports = function toReadable(number) {
         "nineteen",
     ];
     const tens = [
+        "",
         "ten",
         "twenty",
         "thirty",
@@ -44,17 +46,13 @@ module.exports = function toReadable(number) {
         if (number > 0) result += " ";
     }
 
-    if (number === 10) {
-        result += tens[0];
-    } else if (number >= 11 && number <= 19) {
-        result += teens[number - 11];
+    if (number >= 10 && number <= 19) {
+        result += teens[number - 10]; // исправлено
     } else if (number >= 20) {
-        result += tens[Math.floor(number / 10) - 1];
+        result += tens[Math.floor(number / 10)];
         number %= 10;
-        if (number > 0) result += " ";
-    }
-
-    if (number > 0 && number < 10) {
+        if (number > 0) result += " " + ones[number]; // исправлено
+    } else if (number < 10) {
         result += ones[number];
     }
 
